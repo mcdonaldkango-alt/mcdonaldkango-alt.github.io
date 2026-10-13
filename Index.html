@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KangoTaxi - Book Your Ride in Rusape</title>
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+.container { background-color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+h2 { text-align: center; color: #333; margin-bottom: 20px; }
+label { display: block; margin-bottom: 8px; color: #666; font-weight: bold; }
+input, select, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
+button { width: 100%; background-color: #25d366; color: white; padding: 14px; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; transition: background-color 0.3s; }
+button:hover { background-color: #128c7e; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>KangoTaxi Booking</h2>
+<form id="bookingForm">
+<label for="name">Full Name</label>
+<input type="text" id="name" required placeholder="Enter your name">
+<label for="pickup">Pickup Location</label>
+<input type="text" id="pickup" required placeholder="Where are we picking you up?">
+<label for="destination">Destination</label>
+<input type="text" id="destination" required placeholder="Where are you going?">
+<label for="package">Service Package</label>
+<select id="package">
+<option value="Local Trip">Local Trip</option>
+<option value="Airport Transfer">Airport Transfer</option>
+<option value="Hourly Rental">Hourly Rental</option>
+<option value="Event Hire">Event Hire</option>
+</select>
+<button type="button" onclick="sendToWhatsApp()">Book via WhatsApp</button>
+</form>
+</div>
+<script>
+function sendToWhatsApp() {
+const name = document.getElementById('name').value;
+const pickup = document.getElementById('pickup').value;
+const destination = document.getElementById('destination').value;
+const servicePackage = document.getElementById('package').value;
+if (!name || !pickup || !destination) {
+alert('Please fill in all required fields.');
+return;
+}
+const message = Hello, I would like to book a ride.%0A%0A +
+*Name:* ${name}%0A +
+*Pickup:* ${pickup}%0A +
+*Destination:* ${destination}%0A +
+*Package:* ${servicePackage};
+const phoneNumber = '263782471690';
+const whatsappURL = https://wa.me/${phoneNumber}?text=${message};
+window.open(whatsappURL, '_blank');
+}
+</script>
+</body>
+</html>
